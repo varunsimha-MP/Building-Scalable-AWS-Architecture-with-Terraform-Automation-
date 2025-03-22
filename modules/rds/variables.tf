@@ -41,3 +41,7 @@ variable "rds_ingress_rule" {
         security_group = list(string)
     }))
 }
+
+variable "az_replica" {
+  default = "ap-south-1b"
+}

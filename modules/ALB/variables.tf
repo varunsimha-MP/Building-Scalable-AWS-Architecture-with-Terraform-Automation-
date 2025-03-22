@@ -37,7 +37,24 @@ variable "alb_ingress_rule" {
     }))
 }
 
+variable "alb_egress_rule" {
+    type = map(object({
+        port = number
+        protocol = string
+        cidr_block = list(string)
+        description = string
+    }))
+}
+
 variable "instance" {
   type = list(string)
   default = [ ]
+}
+
+variable "route" {
+  
+}
+
+variable "sl_valid_alb" {
+  
 }

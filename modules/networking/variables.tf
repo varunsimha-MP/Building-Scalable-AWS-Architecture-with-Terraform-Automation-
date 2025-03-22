@@ -1,10 +1,20 @@
-variable "vpc_cidr" {
+variable "vpc_cidr_1" {
     default = "10.20.0.0/16"
 }
 
-variable "vpc_tags" {
+variable "vpc_cidr_2" {
+    default = "10.0.0.0/16"
+}
+
+variable "vpc_tags_1" {
     default = {
         Name = "app-vpc"
+    }
+}
+
+variable "vpc_tags_2" {
+    default = {
+        Name = "db-vpc"
     }
 }
 
@@ -20,7 +30,7 @@ variable "public_route_table_tags" {
     }
 }
 
-variable "private_tags" {
+variable "private_subnet_tags" {
     default = {
         Name = "private_subnet"
     }
@@ -48,5 +58,15 @@ variable "pub_subnet_cidr" {
 }
 
 variable "private_subnet_cidr" {
-    default = ["10.20.2.0/24","10.20.4.0/24"]
+    default = ["10.0.2.0/24","10.0.4.0/24"]
+}
+
+variable "peering" {
+    default = "peering_from_app_to_db"
+}
+
+variable "peering_name" {
+    default = {
+        Name = "peering_from_app_to_db"
+    }
 }

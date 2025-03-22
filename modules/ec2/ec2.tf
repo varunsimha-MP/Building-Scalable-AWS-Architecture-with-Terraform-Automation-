@@ -1,12 +1,13 @@
 resource "aws_instance" "ec2" {
-    count = 1
+    count = 2
     ami = var.instance_ami
     associate_public_ip_address = var.public_id
     instance_type = var.instance_type
-    subnet_id = var.subnet_id[count.index]
+    subnet_id = slice(var.subnet_id, count.index, count.index+1)[0]
     vpc_security_group_ids = [aws_security_group.ec2_sg.id]
     key_name = var.key
     tags = var.ec2_name
+    user_data = file("${path.module}/userdata.sh")
 }
 
 resource "aws_security_group" "ec2_sg" {
